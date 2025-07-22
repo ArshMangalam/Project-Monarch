@@ -34,7 +34,8 @@ const DashboardPage = () => {
         }
         const fetchUserData = async () => {
             try {
-                const res = await axios.get('/api/user/me', config);
+                const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+                const res = await axios.get(`${API_URL}/api/user/me`, config);
                 setUser(res.data);
                 await fetchQuests();
             } catch (error) {

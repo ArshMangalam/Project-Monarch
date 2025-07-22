@@ -32,7 +32,8 @@ const LoginPage = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('/api/auth/login', formData);
+      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+      const res = await axios.get(`${API_URL}/api/auth/login`, config);
       // Store the token in localStorage
       localStorage.setItem('token', res.data.token);
       alert('Login successful!');

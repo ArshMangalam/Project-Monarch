@@ -30,7 +30,8 @@ const RegisterPage = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('/api/auth/register', formData);
+      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+      const res = await axios.get(`${API_URL}/api/auth/register`, config);
       console.log(res.data); // Should show success message
       alert('Registration successful!');
     } catch (err) {
